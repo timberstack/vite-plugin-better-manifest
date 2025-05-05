@@ -1,0 +1,21 @@
+{
+    "tasks": {
+        "dev": "deno run -A --watch index.ts",
+        "build": "deno run -A viteServer.ts",
+        "prod": "deno run -A --env-file index.ts",
+        "start": "deno run build && deno run prod"
+    },
+    "compilerOptions": {
+        "lib": [
+            "deno.window",
+            "dom"
+        ]
+    },
+    "nodeModulesDir": "auto",
+    "imports": {
+        "@std/http": "jsr:@std/http@^1.0.15",
+        "@timberstack/vite-plugin-better-manifest": "../../src/index.ts",
+        "htm": "npm:htm@^3.1.1",
+        "vite": "npm:vite@^6.3.5"
+    }
+}
