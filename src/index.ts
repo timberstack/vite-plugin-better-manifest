@@ -41,7 +41,7 @@ const scriptLink = (manifest: Manifest, name: string) =>
 const preloadLink = (chunk: ManifestChunk) =>
   `<link rel="modulepreload" href="/${chunk.file}" />`;
 
-export const generateHeadScripts = (
+const generateHeadScripts = (
   fileName: string,
   viteManifest: Manifest,
 ) => {
@@ -100,9 +100,9 @@ export default function (userOptions?: Options): Plugin {
     },
   };
 
-  let importsManifest;
+  let importsManifest: { [key: string]: string };
   return {
-    name: "file-links-map",
+    name: "vite-plugin-better-manifest",
     config(viteConfig) {
       viteConfig.root = `${cwd()}${resourcesDir}`;
       viteConfig.build = buildOptions;
