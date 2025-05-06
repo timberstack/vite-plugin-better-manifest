@@ -1,6 +1,6 @@
 {
   "name": "@timberstack/vite-plugin-better-manifest",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An easier vite integration with any backend framework.",
   "type": "module",
   "main": "dist/index.js",
