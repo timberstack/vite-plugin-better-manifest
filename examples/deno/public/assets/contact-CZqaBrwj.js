@@ -1,1 +1,2 @@
-console.log("hi from no entry file");console.log("dooo");
+console.log("hi from no entry file");
+console.log("dooo");

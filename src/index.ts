@@ -73,7 +73,7 @@ export type Options = {
   buildTarget?: string;
 };
 
-export const importsPlugin = (userOptions?: Options): Plugin => {
+export default function (userOptions?: Options): Plugin {
   const { resourcesDir, buildTarget }: Options = {
     resourcesDir: "/resources",
     buildTarget: "esnext",
@@ -142,4 +142,4 @@ export const importsPlugin = (userOptions?: Options): Plugin => {
       console.log("Build ended successfully");
     },
   };
-};
+}

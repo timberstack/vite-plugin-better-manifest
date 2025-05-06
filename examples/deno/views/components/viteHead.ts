@@ -1,11 +1,12 @@
 const isProd = Deno.env.get("PROD");
+
 let betterManifest: { [key: string]: string };
 try {
   betterManifest = (await import("../../.vite/better-manifest.json", {
     with: { type: "json" },
   })).default;
 } catch (_) {
-  console.log("Manifest not found. Try building.");
+  if (isProd) console.log("Manifest not found. Run the build command.");
 }
 
 export const ViteHead = (script: string) => {
