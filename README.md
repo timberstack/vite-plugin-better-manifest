@@ -22,9 +22,11 @@ export default defineConfig({
 
 ## Options
 ```javascript
+// exemplified with the defaults
 BetterManifest({
-    resourcesDir: "/resources", // will set your vite root option
-    buildTarget: "esnext", // build target in case you're using typescript
+    resourcesDir: "/resources", // will set vite root option
+    tsBuildTarget: "esnext", // build target in case you're using typescript
+    publicDir: "/public" // your public folder, used as output directory for vite's generated assets folder
 })
 ```
 
@@ -118,22 +120,17 @@ if (isProd) {
 
 
 // Vite Head component
-export const ViteHead = (script) => {
-  if(!script.startsWith("/")) {
-    console.error("Scripts must start with '/'!")
-    return;
-  } 
+export const ViteHead = (script: string) => {
   if (!script) return;
 
-  const devScripts = `
+  const devScripts = /*html*/ `
         <script type="module" src="http://localhost:5173/@vite/client"></script>
         <script type="module" src="http://localhost:5173${script}"></script>
     `;
 
-  return `
-          ${isProd ? betterManifest[script] : devScripts}
-    `;
+  return isProd ? betterManifest[script] : devScripts;
 };
+
 
 // ... somewhere in your code
 ViteHead("/index.ts")

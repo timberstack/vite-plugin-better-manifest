@@ -1,6 +1,4 @@
-import { build, createServer } from "vite";
-
-const arg = Deno.args.at(-1);
+import { createServer } from "vite";
 
 export const viteDevServer = async () => {
   const server = await createServer();
@@ -9,11 +7,3 @@ export const viteDevServer = async () => {
   server.printUrls();
   server.bindCLIShortcuts({ print: true });
 };
-
-if (import.meta.main) {
-  if (arg === "dev") {
-    await viteDevServer();
-  } else {
-    await build();
-  }
-}

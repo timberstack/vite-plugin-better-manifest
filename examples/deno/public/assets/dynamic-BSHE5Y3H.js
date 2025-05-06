@@ -1,2 +1,1 @@
-const o = "world";
-export { o as hello };
+const o="world";export{o as hello};

@@ -70,13 +70,15 @@ const generateHeadScripts = (
 
 export type Options = {
   resourcesDir?: string;
-  buildTarget?: string;
+  tsBuildTarget?: string;
+  publicDir?: string;
 };
 
 export default function (userOptions?: Options): Plugin {
-  const { resourcesDir, buildTarget }: Options = {
+  const { resourcesDir, tsBuildTarget, publicDir }: Options = {
     resourcesDir: "/resources",
-    buildTarget: "esnext",
+    tsBuildTarget: "esnext",
+    publicDir: "/public",
     ...userOptions,
   };
 
@@ -91,9 +93,9 @@ export default function (userOptions?: Options): Plugin {
     // generate .vite/manifest.json in outDir
     manifest: true,
     copyPublicDir: false,
-    outDir: `${cwd()}/public`,
+    outDir: `${cwd()}${publicDir}`,
     emptyOutDir: false,
-    target: buildTarget,
+    target: tsBuildTarget,
 
     rollupOptions: {
       input: entrypoints,

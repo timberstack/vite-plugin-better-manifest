@@ -1,7 +1,7 @@
 {
   "tasks": {
     "dev": "deno run -A --watch index.ts",
-    "build": "deno run -A viteServer.ts",
+    "build": "deno run -A npm:vite build",
     "prod": "deno run -A --env-file index.ts",
     "start": "deno run build && deno run prod"
   },
